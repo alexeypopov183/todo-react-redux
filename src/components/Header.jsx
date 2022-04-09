@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {useDispatch} from "react-redux";
 import {saveTodo} from "../redux/actions/action";
 import Button from "./Button";
+import button from "./Button";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -19,13 +20,13 @@ const Header = () => {
 
   return (
     <div>
-      <form action="">
+      <form action="" onSubmit={handleSubmit}>
         <input
           value={text}
           onChange={handleChange}
           type="text"
         />
-        <Button styles="btn-outline-primary" onClick={ handleSubmit }>Add</Button>
+        <Button type="button" styles="btn-outline-primary" >Add</Button>
       </form>
     </div>
   );
