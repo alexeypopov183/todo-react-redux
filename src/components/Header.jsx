@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
 import {useDispatch} from "react-redux";
+
 import {saveTodo} from "../redux/actions/action";
 import Button from "./Button";
-import button from "./Button";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -13,9 +13,13 @@ const Header = () => {
   }
 
   const handleSubmit = (e) => {
-    setText('');
     e.preventDefault();
-    dispatch(saveTodo(text));
+    if (text) {
+      setText('');
+      dispatch(saveTodo(text));
+    } else {
+      alert('Вы ничего не написали!')
+    }
   }
 
   return (

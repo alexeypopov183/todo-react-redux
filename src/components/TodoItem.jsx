@@ -1,7 +1,8 @@
 import React from 'react';
-import Button from "./Button";
 import {useDispatch} from "react-redux";
 import {deleteTodo, markTodo} from "../redux/actions/action";
+
+import Button from "./Button";
 
 const TodoItem = ({el, index, mark}) => {
   const dispatch = useDispatch();
