@@ -22,6 +22,7 @@ const Header = () => {
     <div>
       <form action="" onSubmit={handleSubmit}>
         <input
+          placeholder="Type todo..."
           value={text}
           onChange={handleChange}
           type="text"

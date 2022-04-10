@@ -9,8 +9,9 @@ const Main = () => {
 
   return (
     <div className="todo">
+
       { todo.map((el, index) => (
-        <TodoItem el={el} index={index}/>
+        <TodoItem mark={el.mark ? 'bold' : 'inherit'} el={el} index={index}/>
       ))}
     </div>
   );
