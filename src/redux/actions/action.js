@@ -1,9 +1,9 @@
-let uniqId = 0;
 
-export const saveTodo = (text) => ({
+export const saveTodo = (text, time) => ({
     type: 'SAVE_TODO',
     text: text,
-    id: uniqId++
+    time: time,
+    id: Date.now()
   })
 
 export const deleteTodo = (id) => ({

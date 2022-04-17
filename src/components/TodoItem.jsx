@@ -14,14 +14,23 @@ const TodoItem = ({el, index, mark}) => {
   const handleMarkItem = (id) => {
     dispatch(markTodo(id));
   }
+
+  const getTime = (date) => {
+    const nowDate = new Date();
+    if (nowDate - date >= 86400000) {
+      return `${date.getDate()}-${date.getMonth()}-${date.getFullYear()}`;
+    }
+    return `${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
+  }
+
   return (
-    <div
-      style={{fontWeight: mark}}
-      key={`${el.id}_${el.text}`}
-      className="todo__item">
-      {index + 1}. {el.text}
-      <Button onClick={() => handleDeleteItem(el.id)} styles="btn-danger">Delete</Button>
-      <Button onClick={() => handleMarkItem(el.id)} styles="btn-success">Mark</Button>
+    <div className="todo__item">
+      <p style={{fontWeight: mark}}>{index + 1}. {el.text} </p>
+      <div className="todo__btns">
+        <span className="todo__time">{getTime(el.time)}</span>
+        <Button onClick={() => handleDeleteItem(el.id)} styles="btn-danger">Удалить</Button>
+        <Button onClick={() => handleMarkItem(el.id)} styles="btn-success">Отметить</Button>
+      </div>
     </div>
   );
 };

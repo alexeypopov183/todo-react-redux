@@ -4,35 +4,37 @@ import {useDispatch} from "react-redux";
 import {saveTodo} from "../redux/actions/action";
 import Button from "./Button";
 
-const Header = () => {
+const Header = ({handleFilter}) => {
   const dispatch = useDispatch();
   const [text, setText] = useState('');
 
   const handleChange = (e) => {
-    setText(e.target.value)
+    setText(e.target.value);
   }
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (text) {
       setText('');
-      dispatch(saveTodo(text));
+      const date = new Date();
+      dispatch(saveTodo(text, date));
     } else {
-      alert('Вы ничего не написали!')
+      alert('Вы ничего не написали!');
     }
   }
 
   return (
-    <div>
+    <div className="header">
       <form action="" onSubmit={handleSubmit}>
         <input
-          placeholder="Type todo..."
+          placeholder="Запишите дела..."
           value={text}
           onChange={handleChange}
           type="text"
         />
-        <Button type="button" styles="btn-outline-primary" >Add</Button>
+        <Button type="button" styles="btn-outline-primary" >Добавить</Button>
       </form>
+      <input onChange={(e) => handleFilter(e)} placeholder="Поиск" type="text"/>
     </div>
   );
 };

@@ -1,15 +1,21 @@
-import React from "react";
+import React, {useState} from "react";
 
-import "../index.scss"
+import "../index.scss";
 
 import Header from "./Header";
 import Main from "./Main";
 
 function App() {
+  const [filterPost, setFilterPost] = useState('');
+
+  const handleFilter = (e) => {
+    setFilterPost(e.target.value);
+  }
+
   return (
-    <div>
-      <Header />
-      <Main />
+    <div className="container">
+      <Header handleFilter={handleFilter}/>
+      <Main filterPost={filterPost}/>
     </div>
   );
 }

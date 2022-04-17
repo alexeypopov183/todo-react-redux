@@ -7,6 +7,7 @@ export function reducer (state = [], action) {
         {
           id: action.id,
           text: action.text,
+          time: action.time,
           mark: false,
         }
       ]

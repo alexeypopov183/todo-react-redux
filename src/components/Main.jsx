@@ -3,12 +3,21 @@ import {useSelector} from "react-redux";
 
 import TodoItem from "./TodoItem";
 
-const Main = () => {
+const Main = ({filterPost}) => {
   const todo = useSelector(state => state);
+
+  const sortedPosts = (todo) => {
+    if (filterPost) {
+      return todo.filter(el => el.text.includes(filterPost));
+    }
+    return todo;
+  }
+
   return (
     <div className="todo">
-      { todo.map((el, index) => (
-        <TodoItem mark={el.mark ? 'bold' : 'inherit'} el={el} index={index}/>
+      {
+        sortedPosts(todo).map((el, index) => (
+        <TodoItem key={el.id} mark={el.mark ? 'bold' : 'inherit'} el={el} index={index}/>
       ))}
     </div>
   );
