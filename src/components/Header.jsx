@@ -31,7 +31,9 @@ const Header = ({handleFilter}) => {
           onChange={handleChange}
           type="text"
         />
-        <Button type="button" styles="btn-outline-primary" >Добавить</Button>
+        <Button type="button" styles="btn-primary btn-lg" >
+          Добавить
+        </Button>
       </form>
       <input onChange={(e) => handleFilter(e)} placeholder="Поиск" type="text"/>
     </div>
