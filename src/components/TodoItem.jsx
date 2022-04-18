@@ -1,7 +1,9 @@
 import React from 'react';
+import {formatDistanceToNowStrict} from "date-fns";
+import {ru} from "date-fns/locale";
 import {useDispatch} from "react-redux";
-import {deleteTodo, markTodo} from "../redux/actions/action";
 
+import {deleteTodo, markTodo} from "../redux/actions/action";
 import Button from "./Button";
 
 const TodoItem = ({el, index, mark}) => {
@@ -17,11 +19,8 @@ const TodoItem = ({el, index, mark}) => {
 
   const getTime = (numDate) => {
     const date = new Date(numDate);
-    const nowDate = new Date();
-    if (nowDate - date >= 86400000) {
-      return `${date.getDate()}-${date.getMonth()}-${date.getFullYear()}`;
-    }
-    return `${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
+    return `${formatDistanceToNowStrict(date, {locale: ru})} назад`
+
   }
 
   return (
