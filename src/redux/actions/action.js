@@ -15,3 +15,8 @@ export const markTodo = (id) => ({
   type: 'MARK_TODO',
   id
 })
+
+export const doneTodo = (id) => ({
+  type: 'DONE_TODO',
+  id
+})

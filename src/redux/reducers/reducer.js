@@ -7,7 +7,7 @@ export function reducer (state = [], action) {
         {
           id: action.id,
           text: action.text,
-          time: action.time,
+          done: false,
           mark: false,
         }
       ]
@@ -19,6 +19,14 @@ export function reducer (state = [], action) {
       return state.map(el => {
         if (action.id === el.id) {
           el.mark = !el.mark
+        }
+        return el;
+      })
+
+    case 'DONE_TODO':
+      return state.map(el => {
+        if (action.id === el.id) {
+          el.done = !el.done
         }
         return el;
       })

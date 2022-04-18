@@ -17,7 +17,13 @@ const Main = ({filterPost}) => {
     <div className="todo">
       {
         sortedPosts(todo).map((el, index) => (
-        <TodoItem key={el.id} mark={el.mark ? 'bold' : 'inherit'} el={el} index={index}/>
+        <TodoItem
+          key={el.id}
+          mark={el.mark ? 'bold' : 'inherit'}
+          done={el.done ? 'line-through' : 'none'}
+          el={el}
+          index={index}
+        />
       ))}
     </div>
   );
