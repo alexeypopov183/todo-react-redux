@@ -13,10 +13,10 @@ function App() {
   }
 
   return (
-    <div className="container">
-      <Header handleFilter={handleFilter}/>
-      <Main filterPost={filterPost}/>
-    </div>
+      <div className="container">
+        <Header handleFilter={handleFilter}/>
+        <Main filterPost={filterPost}/>
+      </div>
   );
 }
 

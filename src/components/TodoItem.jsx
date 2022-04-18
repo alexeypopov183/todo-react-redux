@@ -24,13 +24,15 @@ const TodoItem = ({el, index, mark, done}) => {
   const getTime = (numDate) => {
     const date = new Date(numDate);
     return `${formatDistanceToNowStrict(date, {locale: ru})} назад`
-
   }
 
   return (
     <div className="todo__item">
       <div className="todo__info">
-        <button onClick={() => handleDoneItem(el.id)}></button>
+        {el.done
+          ? <input checked onClick={() => handleDoneItem(el.id)} className="form-check-input" type="checkbox" />
+          : <input onClick={() => handleDoneItem(el.id)} className="form-check-input" type="checkbox" />
+        }
         <p style={{fontWeight: mark, textDecoration: done, marginRight: 10}}>{index + 1}. {el.text} </p>
         <span className="todo__time">{getTime(el.id)}</span>
       </div>
