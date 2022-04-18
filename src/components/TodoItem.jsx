@@ -15,7 +15,8 @@ const TodoItem = ({el, index, mark}) => {
     dispatch(markTodo(id));
   }
 
-  const getTime = (date) => {
+  const getTime = (numDate) => {
+    const date = new Date(numDate);
     const nowDate = new Date();
     if (nowDate - date >= 86400000) {
       return `${date.getDate()}-${date.getMonth()}-${date.getFullYear()}`;
@@ -27,7 +28,7 @@ const TodoItem = ({el, index, mark}) => {
     <div className="todo__item">
       <p style={{fontWeight: mark}}>{index + 1}. {el.text} </p>
       <div className="todo__btns">
-        <span className="todo__time">{getTime(el.time)}</span>
+        <span className="todo__time">{getTime(el.id)}</span>
         <Button onClick={() => handleDeleteItem(el.id)} styles="btn-danger">Удалить</Button>
         <Button onClick={() => handleMarkItem(el.id)} styles="btn-success">Отметить</Button>
       </div>

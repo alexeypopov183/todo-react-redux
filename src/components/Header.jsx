@@ -16,8 +16,7 @@ const Header = ({handleFilter}) => {
     e.preventDefault();
     if (text) {
       setText('');
-      const date = new Date();
-      dispatch(saveTodo(text, date));
+      dispatch(saveTodo(text));
     } else {
       alert('Вы ничего не написали!');
     }
